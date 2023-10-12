@@ -5,7 +5,7 @@
   "main": "index.ts",
   "type": "commonjs",
   "scripts": {
-    "start": "nodemon ./src/app.js"
+    "start": "nodemon ./src/index.ts"
   },
   "repository": {
     "type": "git",
