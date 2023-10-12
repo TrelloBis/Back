@@ -23,6 +23,7 @@ model User {
     id          String   @id @default(auto()) @map("_id") @db.ObjectId
     username    String @unique
     password    String
+    tasks       Task[]
 }
 
 model Task {
@@ -31,4 +32,6 @@ model Task {
     description String
     priorite    PrioriteStatus
     etat        EtatStatus
+    user        User     @relation(fields: [userId], references: [id])
+    userId      String
 }
