@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url = "mongodb+srv://benoit:piloupilou@cluster0.wtdt7ix.mongodb.net/?retryWrites=true&w=majority"
+}
+
+enum PrioriteStatus {
+    LOW
+    MEDIUM
+    HIGH
+}
+
+enum EtatStatus {
+    ToDo
+    InProgress
+    Done
+}
+
+model User {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    username    String @unique
+    password    String
+}
+
+model Task {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    title       String
+    description String
+    priorite    PrioriteStatus
+    etat        EtatStatus
+}

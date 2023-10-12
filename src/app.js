@@ -6,5 +6,6 @@ app.use(cors())
 app.use(express.json())
 
 /// Routes ///
+app.use("/users", require("./routes/user-routes"))
 
 export default app
