@@ -48,7 +48,7 @@ function deleteTask(id) {
     })
 }
 
-export default {
+module.exports = {
     createTask,
     getTasksByUserId,
     updateTask,

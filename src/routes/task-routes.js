@@ -8,4 +8,4 @@ router.get('/:userId', taskController.getTasksByUserId);
 router.put('/:id', taskController.updateTask);
 router.delete('/:id', taskController.deleteTask);
 
-export default router;
+module.exports = router;

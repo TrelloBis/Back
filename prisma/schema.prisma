@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
     provider = "mongodb"
-    url = "mongodb+srv://benoit:piloupilou@cluster0.wtdt7ix.mongodb.net/?retryWrites=true&w=majority"
+    url = "mongodb+srv://benoit:piloupilou@cluster0.wtdt7ix.mongodb.net/trelloBisDB?retryWrites=true&w=majority"
 }
 
 enum PrioriteStatus {

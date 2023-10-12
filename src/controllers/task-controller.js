@@ -1,17 +1,17 @@
 const taskService = require("../services/task-service");
 const express = require("express");
 
-function createTask(req, res) {
+function createTask() {
     const req = express.Request
     const res = express.Response
 
     const title = req.body.title
     const description = req.body.description
-    const priorite = req.body.priorite
-    const etat = req.body.etat
+    const priority = req.body.priority
+    const state = req.body.state
     const userId = req.body.userId
 
-    taskService.createTask(title, description, priorite, etat, userId)
+    taskService.createTask(title, description, priority, state, userId)
         .then((task) => {
             res.json(task)
         })
@@ -20,7 +20,8 @@ function createTask(req, res) {
         })
 }
 
-function getTasksByUserId(req, res) {
+function getTasksByUserId() {
+
     const req = express.Request
     const res = express.Response
 
@@ -35,17 +36,17 @@ function getTasksByUserId(req, res) {
         })
 }
 
-function updateTask(req, res) {
+function updateTask() {
     const req = express.Request
     const res = express.Response
 
     const id = req.params.id
     const title = req.body.title
     const description = req.body.description
-    const priorite = req.body.priorite
-    const etat = req.body.etat
+    const priority = req.body.priority
+    const state = req.body.state
 
-    taskService.updateTask(id, title, description, priorite, etat)
+    taskService.updateTask(id, title, description, priority, state)
         .then((task) => {
             res.json(task)
         })
@@ -54,7 +55,7 @@ function updateTask(req, res) {
         })
 }
 
-function deleteTask(req, res) {
+function deleteTask() {
     const req = express.Request
     const res = express.Response
 
@@ -69,7 +70,7 @@ function deleteTask(req, res) {
         })
 }
 
-export default {
+module.exports = {
     createTask,
     getTasksByUserId,
     updateTask,
