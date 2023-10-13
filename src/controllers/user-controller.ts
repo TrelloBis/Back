@@ -29,7 +29,7 @@ const getUserById = async (req: Request, res: Response) => {
 
 const getUserByUsername = async (req: Request, res: Response) => {
     let returnedResponse;
-    let username = req.params.username;
+    let username = req.body.username;
 
     try {
         returnedResponse = await userService.getUserByUsername(username);
