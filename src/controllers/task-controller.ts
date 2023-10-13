@@ -6,7 +6,7 @@ const createTask = async (req: Request, res: Response) => {
     let requestBody = req.body;
 
     try {
-        //returnedResponse = await taskService.createTask(requestBody);
+        returnedResponse = await taskService.createTask(requestBody);
         res.status(201).send(returnedResponse);
     }
     catch (error: {message: string} | any) {
@@ -16,7 +16,7 @@ const createTask = async (req: Request, res: Response) => {
 
 const getTaskByUserId = async (req: Request, res: Response) => {
     let returnedResponse;
-    let id = req.params.id;
+    const id = req.body.userId;
 
     try {
         returnedResponse = await taskService.getTaskByUserId(id);
@@ -46,7 +46,7 @@ const updateTask = async (req: Request, res: Response) => {
     let id = req.params.id;
 
     try {
-        //returnedResponse = await taskService.updateTask(id, requestBody);
+        returnedResponse = await taskService.updateTask(id, requestBody);
         res.status(200).send(returnedResponse);
     }
     catch (error: {message: string} | any) {

@@ -17,5 +17,41 @@ exemple pour le body :
     "password": "blabla2"
 }
 
-GET http://localhost:8000/api/users/:username
-exemple : http://localhost:8000/api/users/blabla
+POST http://localhost:8000/api/users/login
+exemple:
+{
+    "username": "blabla"
+}
+
+GET http://localhost:8000/api/users/:idDeLUtilisateurGenere
+
+
+
+/// pour les tasks :
+creation : http://localhost:8000/api/tasks/create
+exemple pour le body :
+{
+    "id": "65293cbee65de428561f69d4",
+    "title": "gr",
+    "description": "pppp",
+    "priority": "LOW",
+    "state": "TODO",
+    "userId": "6528dd8c21997aff7e772238"
+}
+
+recup tache par l'id :
+http://localhost:8000/api/tasks/65293cbee65de428561f69d4
+(exemple avec la création du dessus)
+
+recup tache par user id:
+http://localhost:8000/api/tasks/6528dd8c21997aff7e772238
+(exemple avec la création du dessus)
+
+modif :
+http://localhost:8000/api/tasks/65293cbee65de428561f69d4
+(exemple avec la création du dessus)
+
+avec un body
+
+supp :
+http://localhost:8000/api/tasks/65293cbee65de428561f69d4
