@@ -7,13 +7,13 @@ datasource db {
     url = "mongodb+srv://benoit:piloupilou@cluster0.wtdt7ix.mongodb.net/trelloBisDB?retryWrites=true&w=majority"
 }
 
-enum PrioriteStatus {
+enum TaskPriority {
     LOW
     MEDIUM
     HIGH
 }
 
-enum EtatStatus {
+enum TaskState {
     ToDo
     InProgress
     Done
@@ -30,8 +30,8 @@ model Task {
     id          String   @id @default(auto()) @map("_id") @db.ObjectId
     title       String
     description String
-    priorite    PrioriteStatus
-    etat        EtatStatus
+    priority    TaskPriority
+    state       TaskState
     user        User     @relation(fields: [userId], references: [id])
     userId      String
 }
