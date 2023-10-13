@@ -4,10 +4,10 @@ import * as taskController from "../controllers/task-controller";
 const TaskRouter = express.Router();
 
 TaskRouter
-    .post("/", taskController.createTask)
+    .post("/create", taskController.createTask)
     .get("/:id", taskController.getTaskById)
-    .get("/:userId", taskController.getTaskByUserId)
-    .put("/:username", taskController.updateTask)
-    .delete("/:username", taskController.deleteTask)
+    .post("/", taskController.getTaskByUserId)
+    .put("/:id", taskController.updateTask)
+    .delete("/:id", taskController.deleteTask)
 
 export default TaskRouter

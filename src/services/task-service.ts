@@ -1,31 +1,26 @@
 import { PrismaClient } from "@prisma/client";
-import { TaskState, TaskPriority } from "../shared/task-enum";
 import { async } from "rxjs";
 
 const prisma = new PrismaClient();
 
-// const createTask = async (requestBody: {title: string, description: string, userId: string, state: TaskState, priority: TaskPriority})=> {
-//     let createdTask;
-//     try {
-//         const taskToCreate = await prisma.task.create({
-//             data: {
-//                 title: requestBody.title,
-//                 description: requestBody.description,
-//                 state: requestBody.state,
-//                 priority: requestBody.priority,
-//                 user: {
-//                     connect: {
-//                         id: requestBody.userId
-//                     }
-//                 }
-//             }
-//         })
-//         createdTask = taskToCreate
-//     } catch (error) {
-//         throw error
-//     }
-//     return createdTask
-// }
+const createTask = async (requestBody: {title: string, description: string, userId: string, state: string, priority: string})=> {
+    let createdTask;
+    try {
+        const taskToCreate = await prisma.task.create({
+            data: {
+                title: requestBody.title,
+                description: requestBody.description,
+                state: requestBody.state,
+                priority: requestBody.priority,
+                userId: requestBody.userId
+            }
+        })
+        createdTask = taskToCreate
+    } catch (error) {
+        throw error
+    }
+    return createdTask
+}
 
 const getTaskByUserId = async (userId: string) => {
     let foundTask;
@@ -57,26 +52,26 @@ const getTaskById = async (id: string) => {
     return foundTask
 }
 
-// const updateTask = async (id: string, requestBody: {title: string, description: string, state: TaskState, priority: TaskPriority}) => {
-//     let updatedTask;
-//     try {
-//         const taskToUpdate = await prisma.task.update({
-//             where: {
-//                 id: id
-//             },
-//             data: {
-//                 title: requestBody.title,
-//                 description: requestBody.description,
-//                 state: requestBody.state,
-//                 priority: requestBody.priority
-//             }
-//         })
-//         updatedTask = taskToUpdate
-//     } catch (error) {
-//         throw error
-//     }
-//     return updatedTask
-// }
+const updateTask = async (id: string, requestBody: {title: string, description: string, state: string, priority: string}) => {
+    let updatedTask;
+    try {
+        const taskToUpdate = await prisma.task.update({
+            where: {
+                id: id
+            },
+            data: {
+                title: requestBody.title,
+                description: requestBody.description,
+                state: requestBody.state,
+                priority: requestBody.priority
+            }
+        })
+        updatedTask = taskToUpdate
+    } catch (error) {
+        throw error
+    }
+    return updatedTask
+}
 
 const deleteTask = async (id: string) => {
     let deletedTask;
@@ -94,9 +89,9 @@ const deleteTask = async (id: string) => {
 }
 
 export {
-    //createTask,
+    createTask,
     getTaskById,
     getTaskByUserId,
-    //updateTask,
+    updateTask,
     deleteTask
 }
