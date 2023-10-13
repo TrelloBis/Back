@@ -5,7 +5,8 @@ const TaskRouter = express.Router();
 
 TaskRouter
     .post("/", taskController.createTask)
-    .get("/:username", taskController.getTaskById)
+    .get("/:id", taskController.getTaskById)
+    .get("/:userId", taskController.getTaskByUserId)
     .put("/:username", taskController.updateTask)
     .delete("/:username", taskController.deleteTask)
 

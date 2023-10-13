@@ -14,6 +14,19 @@ const createTask = async (req: Request, res: Response) => {
     }
 }
 
+const getTaskByUserId = async (req: Request, res: Response) => {
+    let returnedResponse;
+    let id = req.params.id;
+
+    try {
+        returnedResponse = await taskService.getTaskByUserId(id);
+        res.status(200).send(returnedResponse);
+    }
+    catch (error: {message: string} | any) {
+        res.status(400).send(error.message);
+    }
+}
+
 const getTaskById = async (req: Request, res: Response) => {
     let returnedResponse;
     let id = req.params.id;
@@ -57,6 +70,7 @@ const deleteTask = async (req: Request, res: Response) => {
 export {
     createTask,
     getTaskById,
+    getTaskByUserId,
     updateTask,
     deleteTask
 }
