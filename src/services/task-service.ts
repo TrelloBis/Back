@@ -1,18 +1,7 @@
 import { PrismaClient } from "@prisma/client";
+import { TaskState, TaskPriority } from "../shared/task-enum";
 
 const prisma = new PrismaClient();
-
-enum TaskPriority {
-    LOW = "LOW",
-    MEDIUM = "MEDIUM",
-    HIGH = "HIGH"
-}
-
-enum TaskState {
-    TODO = "TODO",
-    INPROGRESS = "INPROGRESS",
-    DONE = "DONE"
-}
 
 // const createTask = async (requestBody: {title: string, description: string, userId: string, state: TaskState, priority: TaskPriority})=> {
 //     let createdTask;
