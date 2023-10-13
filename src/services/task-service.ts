@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { TaskState, TaskPriority } from "../shared/task-enum";
+import { async } from "rxjs";
 
 const prisma = new PrismaClient();
 
@@ -25,6 +26,21 @@ const prisma = new PrismaClient();
 //     }
 //     return createdTask
 // }
+
+const getTaskByUserId = async (userId: string) => {
+    let foundTask;
+    try {
+        const findTaskRequest = await prisma.task.findMany({
+            where: {
+                userId: userId
+            }
+        })
+        foundTask = findTaskRequest
+    } catch (error) {
+        throw error
+    }
+    return foundTask
+}
 
 const getTaskById = async (id: string) => {
     let foundTask;
@@ -80,6 +96,7 @@ const deleteTask = async (id: string) => {
 export {
     //createTask,
     getTaskById,
+    getTaskByUserId,
     //updateTask,
     deleteTask
 }

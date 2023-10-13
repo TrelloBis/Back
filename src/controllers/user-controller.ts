@@ -14,6 +14,19 @@ const createUser = async (req: Request, res: Response) => {
     }
 }
 
+const getUserById = async (req: Request, res: Response) => {
+    let returnedResponse;
+    let id = req.params.id;
+
+    try {
+        returnedResponse = await userService.getUserById(id);
+        res.status(200).send(returnedResponse);
+    }
+    catch (error: {message: string} | any) {
+        res.status(400).send(error.message);
+    }
+}
+
 const getUserByUsername = async (req: Request, res: Response) => {
     let returnedResponse;
     let username = req.params.username;
@@ -29,5 +42,6 @@ const getUserByUsername = async (req: Request, res: Response) => {
 
 export {
     createUser,
+    getUserById,
     getUserByUsername
 }
